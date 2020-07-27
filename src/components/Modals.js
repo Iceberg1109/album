@@ -58,7 +58,7 @@ export const UploadModal = ({ open, onClose }) => {
 
   return (
     <Modal open={open} size='small' closeIcon onClose={() => onClose(false)}>
-      <input type='file' id='file' multiple ref={inputFile} style={{ display: 'none' }} accept='image/*' onChange={changeFile} />
+      <input type='file' id='file' multiple ref={inputFile} style={{ display: 'none' }} accept='image/x-png,image/gif,image/jpeg,image/tif,image/svg+xml' onChange={changeFile} />
       <Modal.Header>Select a Photo</Modal.Header>
       <Modal.Content image>
         <Image wrapped bordered size='medium' src={imgSrc} onClick={() => inputFile.current.click()} />
