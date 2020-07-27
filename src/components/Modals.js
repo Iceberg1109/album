@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Image, Modal, Button, Icon, Header, Select } from 'semantic-ui-react'
 import { NotificationManager } from 'react-notifications'
-import CryptoJS from 'crypto-js'
 
 import { uploadPhoto } from '../utils/api'
 
@@ -49,6 +48,7 @@ export const UploadModal = ({ open, onClose }) => {
     }
     uploadPhoto(category, files).then((data) => {
       if (data.length) {
+        onClose(false)
         NotificationManager.success('The photo has been removed successfully', 'Photo Uploaded')
       } else {
         NotificationManager.error('Something went wrong. Please try again later.', 'Photo Not Uploaded')

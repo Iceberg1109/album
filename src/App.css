@@ -27,11 +27,10 @@
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -15px; /* gutter size offset */
   width: auto;
 }
 .investax-masonry-grid_column {
-  padding-left: 15px; /* gutter size */
+  padding: 7px; /* gutter size */
   background-clip: padding-box;
 }
  

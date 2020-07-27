@@ -8,10 +8,30 @@
 }
 .photo-detail {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0px 10px;
   position: absolute;
   bottom: 10px;
   width: 100%;
+}
+.photo-album {
+  font-weight: bold;
+  font-size: 15px;
+  color: #aaa;
+  margin: 0;
+  background: #000;
+  border-radius: 3px;
+  padding: 2px 8px;
+  color: yellow;
+}
+.photo-title {
+  font-weight: normal;
+  font-size: 12px;
+  color: #eee;
+  background: #aaa;
+  padding: 2px 6px;
+  opacity: 0.8;
+  border-radius: 3px;
 }
 .photo-dimmer {
   border-radius: 7px;
@@ -46,21 +66,10 @@
 .photo:hover .img__description {
   transform: translateY(0);
 }
-.photo-album {
-    font-weight: bold;
-    font-size: 15px;
-    color: #aaa;
-    margin: 0;
-  }
-  .photo-title {
-    font-weight: normal;
-    font-size: 12px;
-    color: #aaa;
-  }
-  .photo-remove {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    color: #ddd;
-    cursor: pointer;
-  }
+.photo-remove {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #ddd;
+  cursor: pointer;
+}
