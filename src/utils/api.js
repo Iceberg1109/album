@@ -32,21 +32,6 @@ export const GetImages = async (pageNum) => {
   }
 }
 
-export const GetTotalCount = async (album, files) => {
-  try {
-    const { data } = await POST(
-      `${process.env.REACT_APP_BACKEND_BASE_URL}/photos/list`, {
-        skip: 0,
-        limit: 250
-      }
-    )
-    if (data.message === 'OK') return data.count
-    return 0
-  } catch (err) {
-    return 0
-  }
-}
-
 export const removePhoto = async (album, name) => {
   try {
     const { data } = await DELETE(

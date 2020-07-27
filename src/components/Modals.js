@@ -7,7 +7,6 @@ import { uploadPhoto } from '../utils/api'
 export const PhotoModal = ({ onClose, imgSrc }) => {
   return (
     <Modal open={!!imgSrc} onClose={() => onClose('')} closeIcon>
-      <Modal.Header>Show the photo</Modal.Header>
       <Modal.Content>
         <Image src={imgSrc} fluid />
       </Modal.Content>
