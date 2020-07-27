@@ -36,6 +36,11 @@ export default () => {
       })
     setPageNum(pageNum + 1)
   }
+
+  const removefromState = (id) => {
+    const removed = images.filter(v => v.id !== id)
+    setImages(removed)
+  }
   return (
     <>
       <Menu setUpload={setUpload} />
@@ -59,7 +64,7 @@ export default () => {
           {
             images.map((img) => {
               return (
-                <Photo data={img} key={img.id} showModal={setIndividual} />
+                <Photo data={img} key={img.id} showModal={setIndividual} removeMe={removefromState} />
               )
             })
           }

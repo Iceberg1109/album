@@ -4,11 +4,11 @@ import { NotificationManager } from 'react-notifications'
 
 import { removePhoto } from '../utils/api'
 
-function App ({ data, showModal, setTotalCnt }) {
+function App ({ data, showModal, removeMe }) {
   const remove = (e) => {
     removePhoto(data.album, data.name).then((response) => {
       if (response === true) {
-        setTotalCnt()
+        removeMe(data.id)
         NotificationManager.success('The photo has been removed successfully', 'Photo Removed')
       } else {
         NotificationManager.error('Something went wrong. Please try again later.', 'Photo Not Removed')
