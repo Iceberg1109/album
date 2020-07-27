@@ -46,21 +46,19 @@ export const removePhoto = async (album, name) => {
 
 export const uploadPhoto = async (album, files) => {
   try {
-    console.log('upload => ', album, files.length)
     const formData = new FormData()
     formData.append('album', album)
     for (let i = 0; i < files.length; i++) {
       formData.append('documents', files[i])
     }
 
-    console.log('upload form => ', formData)
     const { data } = await PUT(
       `${process.env.REACT_APP_BACKEND_BASE_URL}/photos`, formData
     )
-    console.log(data)
-    if (data.message === 'OK') return true
-    return false
+
+    if (data.message === 'OK') return data.data
+    return []
   } catch (err) {
-    return false
+    return []
   }
 }

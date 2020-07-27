@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Image, Grid, Pagination } from 'semantic-ui-react'
 import { NotificationContainer } from 'react-notifications'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Masonry from 'react-masonry-css'
@@ -41,6 +40,7 @@ export default () => {
     const removed = images.filter(v => v.id !== id)
     setImages(removed)
   }
+
   return (
     <>
       <Menu setUpload={setUpload} />

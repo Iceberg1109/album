@@ -1,8 +1,11 @@
 import React, { useRef, useState } from 'react'
 import { Image, Modal, Button, Icon, Header, Select } from 'semantic-ui-react'
 import { NotificationManager } from 'react-notifications'
+import CryptoJS from 'crypto-js'
 
 import { uploadPhoto } from '../utils/api'
+
+import DefaultPhoto from '../img/default.png'
 
 export const PhotoModal = ({ onClose, imgSrc }) => {
   return (
@@ -14,7 +17,7 @@ export const PhotoModal = ({ onClose, imgSrc }) => {
   )
 }
 
-export const UploadModal = ({ open, onClose, setTotalCnt }) => {
+export const UploadModal = ({ open, onClose }) => {
   const albums = [
     { key: 'Travel', value: 'Travel', text: 'Travel' },
     { key: 'Personal', value: 'Personal', text: 'Personal' },
@@ -23,7 +26,7 @@ export const UploadModal = ({ open, onClose, setTotalCnt }) => {
     { key: 'Other', value: 'Other', text: 'Other' }
   ]
 
-  const [imgSrc, setImgSrc] = useState('https://react.semantic-ui.com/images/avatar/large/rachel.png')
+  const [imgSrc, setImgSrc] = useState(DefaultPhoto)
   const [files, setFiles] = useState(null)
   const [category, setAlbumCategory] = useState('')
 
@@ -44,9 +47,8 @@ export const UploadModal = ({ open, onClose, setTotalCnt }) => {
       NotificationManager.error('Please select the album.', 'Album Not Selected')
       return
     }
-    uploadPhoto(category, files).then((response) => {
-      if (response === true) {
-        setTotalCnt()
+    uploadPhoto(category, files).then((data) => {
+      if (data.length) {
         NotificationManager.success('The photo has been removed successfully', 'Photo Uploaded')
       } else {
         NotificationManager.error('Something went wrong. Please try again later.', 'Photo Not Uploaded')

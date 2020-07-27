@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu } from 'semantic-ui-react'
 
-import Logo from '../logo.png'
+import Logo from '../img/logo.png'
 
 export default ({ setUpload }) => {
   return (
