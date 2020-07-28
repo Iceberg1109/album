@@ -15,11 +15,17 @@ export default () => {
   const [individual, setIndividual] = useState('')
   const [images, setImages] = useState([])
   const [end, setEnd] = useState(false)
+  const [endMsg, setEndMsg] = useState('')
 
   useEffect(() => {
     GetImages(1)
       .then((data) => {
-        setImages(data)
+        if (data === 'network_error') {
+          setEnd(true)
+          setEndMsg('Sorry, we are under maintenance now. We will back soon')
+        } else {
+          setImages(data)
+        }
       })
   }, [])
 
@@ -27,11 +33,16 @@ export default () => {
     GetImages(pageNum + 1)
       .then((data) => {
         console.log(data)
-        if (data.length === 0) {
+        if (data === 'network_error') {
           setEnd(true)
+          setEndMsg('Sorry, we are under maintenance now. We will back soon')
+        } else if (data.length === 0) {
+          setEnd(true)
+          setEndMsg('Yes, you have seen it all!')
+        } else {
+          const result = images.concat(data)
+          setImages(result)
         }
-        const result = images.concat(data)
-        setImages(result)
       })
     setPageNum(pageNum + 1)
   }
@@ -52,7 +63,7 @@ export default () => {
         loader={<h4>Loading...</h4>}
         endMessage={
           <p style={{ textAlign: 'center' }}>
-            <b>Yay! You have seen it all</b>
+            <b>{endMsg}</b>
           </p>
         }
       >

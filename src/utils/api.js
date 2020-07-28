@@ -28,6 +28,7 @@ export const GetImages = async (pageNum) => {
     if (data.message === 'OK') return data.documents
     return []
   } catch (err) {
+    if (err.message === 'Network Error') return 'network_error'
     return []
   }
 }
