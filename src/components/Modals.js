@@ -61,8 +61,16 @@ export const UploadModal = ({ open, onClose }) => {
       <input type='file' id='file' multiple ref={inputFile} style={{ display: 'none' }} accept='image/x-png,image/gif,image/jpeg,image/tif,image/svg+xml' onChange={changeFile} />
       <Modal.Header>Select a Photo</Modal.Header>
       <Modal.Content image>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <Image wrapped bordered size='medium' src={imgSrc} onClick={() => inputFile.current.click()} />
-        <Modal.Description>
+        {files?.length > 0 &&
+          <small>{files.length} photoes are selected.</small>
+        }
+        {(files === null || files.length === 0) &&
+          <small>Please select the photoes.</small>
+        }
+        </div>
+        <Modal.Description style={{marginLeft: 15}}>
           <Header style={{ marginTop: 20 }}>Select the album category</Header>
           <Select placeholder='Select the album country' options={albums} onChange={(e, selected) => setAlbumCategory(selected.value)} />
           <p style={{ marginTop: 20, maxWidth: 350 }}>
