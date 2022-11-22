@@ -12,7 +12,7 @@
     "react-infinite-scroll-component": "^5.0.5",
     "react-masonry-css": "^1.0.14",
     "react-notifications": "^1.6.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^1.0.0"
   },
